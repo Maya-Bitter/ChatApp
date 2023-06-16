@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   StyleSheet,
   ImageBackground,
+  TouchableOpacity,
   View,
   Text,
   Button,
@@ -10,6 +11,14 @@ import {
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState("");
+  const [color, setColor] = useState("");
+
+  const backgroundColor = {
+    Black: "#090C08",
+    Purple: "#474056",
+    Gray: "#8A95A5",
+    Green: "#B9C6AE",
+  };
 
   return (
     <View style={styles.container}>
