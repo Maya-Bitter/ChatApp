@@ -23,12 +23,14 @@ const Start = ({ navigation }) => {
         </View>
         <View style={styles.box}>
           <Text style={styles.Name}>Your name</Text>
+
           <TextInput
             style={styles.textInput}
             value={name}
             onChangeText={setName}
             placeholder="Type your username here"
           />
+          <Text style={styles.Choose}>Choose background color</Text>
 
           <Text style={styles.Button}></Text>
           <Button
@@ -38,7 +40,6 @@ const Start = ({ navigation }) => {
             fontWeigh="600"
             onPress={() => navigation.navigate("Chat", { name: name })}
           />
-          <Text style={styles.Choose}>Choose background color</Text>
         </View>
       </ImageBackground>
     </View>
@@ -65,17 +66,15 @@ const styles = StyleSheet.create({
   },
 
   box: {
-    flex: 20,
+    flex: 44,
     backgroundColor: "#FFFFFF",
-    padding: "10%",
+    padding: "6%",
   },
 
-  //<Image
-  //style={{
-  //width: 51,
-  //height: 51,
-  //resizeMode: 'contain',
-  //}}
+  image: {
+    flex: 1,
+    padding: "6%",
+  },
 
   textInput: {
     width: "88%",
