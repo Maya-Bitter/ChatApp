@@ -84,12 +84,10 @@ const Start = ({ navigation }) => {
               ]}
               onPress={() => setColor(backgroundColor.green.backgroundColor)}
             ></TouchableOpacity>
+
             <Text style={styles.Button}></Text>
             <Button
               title="Start chatting"
-              color="#757083"
-              fontSize="16"
-              fontWeigh="600"
               onPress={() => navigation.navigate("Chat", { name: name })}
             />
           </View>
@@ -140,6 +138,12 @@ const styles = StyleSheet.create({
   colorbox: {
     flexDirection: "row",
     marginBottom: 30,
+  },
+
+  Button: {
+    color: "#757083",
+    fontSize: "16",
+    fontWeigh: "600",
   },
 
   colorButton: {
