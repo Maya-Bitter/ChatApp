@@ -8,8 +8,6 @@ import {
   TextInput,
 } from "react-native";
 
-/* the button go to chat needs to be adjust: Start chatting button: font size 16, font weight 600, font color #FFFFFF, button color #757083 */
-
 const Start = ({ navigation }) => {
   const [name, setName] = useState("");
 
@@ -21,9 +19,7 @@ const Start = ({ navigation }) => {
         style={styles.image}
       >
         <Text style={styles.BigWhite}>CHAT APP</Text>
-
         <Text style={styles.Name}>Your name</Text>
-
         <TextInput
           style={styles.textInput}
           value={name}
@@ -45,11 +41,26 @@ const Start = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  //container: {
+  //  flex: 1,
+  //  justifyContent: "center",
+  //  alignItems: "center",
+  //},
+
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+  },
+
+  //<Image
+  //style={{
+  //width: 51,
+  //height: 51,
+  //resizeMode: 'contain',
+  //}}
 
   textInput: {
     width: "88%",
@@ -68,6 +79,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 45,
     fontWeight: "600",
+    textAlign: "center",
   },
   Name: {
     color: "#757083",
