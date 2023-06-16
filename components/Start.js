@@ -20,10 +20,10 @@ const Start = ({ navigation }) => {
         resizeMode="cover"
         style={styles.image}
       >
-        <Text style={styles.text}>Inside</Text>
-        <Text style={styles.blue}>Welcome!</Text>
         <Text style={styles.BigWhite}>CHAT APP</Text>
+
         <Text style={styles.Name}>Your name</Text>
+
         <TextInput
           style={styles.textInput}
           value={name}
@@ -32,7 +32,10 @@ const Start = ({ navigation }) => {
         />
         <Text style={styles.Button}></Text>
         <Button
-          title="Go to Chat"
+          title="Start chatting"
+          color="#757083"
+          fontSize="16"
+          fontWeigh="600"
           onPress={() => navigation.navigate("Chat", { name: name })}
         />
         <Text style={styles.Choose}>Choose background color</Text>
