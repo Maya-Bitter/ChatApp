@@ -14,10 +14,10 @@ const Start = ({ navigation }) => {
   const [color, setColor] = useState("");
 
   const backgroundColor = {
-    Black: "#090C08",
-    Purple: "#474056",
-    Gray: "#8A95A5",
-    Green: "#B9C6AE",
+    black: { backgroundColor: "#090C08" },
+    purple: { backgroundColor: "#474056" },
+    gray: { backgroundColor: "#8A95A5" },
+    green: { backgroundColor: "#B9C6AE" },
   };
 
   return (
@@ -30,25 +30,69 @@ const Start = ({ navigation }) => {
         <View style={styles.titlebox}>
           <Text style={styles.BigWhite}>CHAT APP</Text>
         </View>
+
         <View style={styles.box}>
           <Text style={styles.Name}>Your name</Text>
-
           <TextInput
             style={styles.textInput}
             value={name}
             onChangeText={setName}
             placeholder="Type your username here"
           />
-          <Text style={styles.Choose}>Choose background color</Text>
+          <Text style={styles.Choose}>
+            Choose background color{color.backgroundColor}
+          </Text>
+          <View style={styles.colorbox}>
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.black,
+                color === backgroundColor.black.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.black.backgroundColor)}
+            ></TouchableOpacity>
 
-          <Text style={styles.Button}></Text>
-          <Button
-            title="Start chatting"
-            color="#757083"
-            fontSize="16"
-            fontWeigh="600"
-            onPress={() => navigation.navigate("Chat", { name: name })}
-          />
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.purple,
+                color === backgroundColor.purple.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.purple.backgroundColor)}
+            ></TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.gray,
+                color === backgroundColor.gray.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.gray.backgroundColor)}
+            ></TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.green,
+                color === backgroundColor.green.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.green.backgroundColor)}
+            ></TouchableOpacity>
+            <Text style={styles.Button}></Text>
+            <Button
+              title="Start chatting"
+              color="#757083"
+              fontSize="16"
+              fontWeigh="600"
+              onPress={() => navigation.navigate("Chat", { name: name })}
+            />
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -91,6 +135,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginTop: 15,
     marginBottom: 15,
+  },
+
+  colorbox: {
+    flexDirection: "row",
+    marginBottom: 30,
+  },
+
+  colorButton: {
+    height: 50,
+    width: 50,
+    margin: 15,
+    padding: 5,
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: "tranparent",
+  },
+  selectedColorButton: {
+    borderColor: "#555",
   },
 
   blue: {
