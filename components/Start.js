@@ -39,62 +39,59 @@ const Start = ({ navigation }) => {
             onChangeText={setName}
             placeholder="Type your username here"
           />
-        </View>
-        <Text style={styles.Choose}>
-          Choose background color{color.backgroundColor}
-        </Text>
-        <View style={styles.colorbox}>
-          <TouchableOpacity
-            style={[
-              styles.colorButton,
-              backgroundColor.black,
-              color === backgroundColor.black.backgroundColor
-                ? styles.selectedColorButton
-                : "",
-            ]}
-            onPress={() => setColor(backgroundColor.black.backgroundColor)}
-          ></TouchableOpacity>
+          <Text style={styles.Choose}>
+            Choose background color{color.backgroundColor}
+          </Text>
+          <View style={styles.colorbox}>
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.black,
+                color === backgroundColor.black.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.black.backgroundColor)}
+            ></TouchableOpacity>
 
-          <TouchableOpacity
-            style={[
-              styles.colorButton,
-              backgroundColor.purple,
-              color === backgroundColor.purple.backgroundColor
-                ? styles.selectedColorButton
-                : "",
-            ]}
-            onPress={() => setColor(backgroundColor.purple.backgroundColor)}
-          ></TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.colorButton,
-              backgroundColor.gray,
-              color === backgroundColor.gray.backgroundColor
-                ? styles.selectedColorButton
-                : "",
-            ]}
-            onPress={() => setColor(backgroundColor.gray.backgroundColor)}
-          ></TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.colorButton,
-              backgroundColor.green,
-              color === backgroundColor.green.backgroundColor
-                ? styles.selectedColorButton
-                : "",
-            ]}
-            onPress={() => setColor(backgroundColor.green.backgroundColor)}
-          ></TouchableOpacity>
-        </View>
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.purple,
+                color === backgroundColor.purple.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.purple.backgroundColor)}
+            ></TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.gray,
+                color === backgroundColor.gray.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.gray.backgroundColor)}
+            ></TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.colorButton,
+                backgroundColor.green,
+                color === backgroundColor.green.backgroundColor
+                  ? styles.selectedColorButton
+                  : "",
+              ]}
+              onPress={() => setColor(backgroundColor.green.backgroundColor)}
+            ></TouchableOpacity>
 
-        <Text style={styles.Button}></Text>
-        <Button
-          title="Start chatting"
-          color="#757083"
-          fontSize="16"
-          fontWeigh="600"
-          onPress={() => navigation.navigate("Chat", { name: name })}
-        />
+            <Text style={styles.Button}></Text>
+            <Button
+              title="Start chatting"
+              onPress={() => navigation.navigate("Chat", { name: name })}
+            />
+          </View>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -141,6 +138,12 @@ const styles = StyleSheet.create({
   colorbox: {
     flexDirection: "row",
     marginBottom: 30,
+  },
+
+  Button: {
+    color: "#757083",
+    fontSize: "16",
+    fontWeigh: "600",
   },
 
   colorButton: {
