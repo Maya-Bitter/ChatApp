@@ -18,23 +18,28 @@ const Start = ({ navigation }) => {
         resizeMode="cover"
         style={styles.image}
       >
-        <Text style={styles.BigWhite}>CHAT APP</Text>
-        <Text style={styles.Name}>Your name</Text>
-        <TextInput
-          style={styles.textInput}
-          value={name}
-          onChangeText={setName}
-          placeholder="Type your username here"
-        />
-        <Text style={styles.Button}></Text>
-        <Button
-          title="Start chatting"
-          color="#757083"
-          fontSize="16"
-          fontWeigh="600"
-          onPress={() => navigation.navigate("Chat", { name: name })}
-        />
-        <Text style={styles.Choose}>Choose background color</Text>
+        <View style={styles.titlebox}>
+          <Text style={styles.BigWhite}>CHAT APP</Text>
+        </View>
+        <View style={styles.box}>
+          <Text style={styles.Name}>Your name</Text>
+          <TextInput
+            style={styles.textInput}
+            value={name}
+            onChangeText={setName}
+            placeholder="Type your username here"
+          />
+
+          <Text style={styles.Button}></Text>
+          <Button
+            title="Start chatting"
+            color="#757083"
+            fontSize="16"
+            fontWeigh="600"
+            onPress={() => navigation.navigate("Chat", { name: name })}
+          />
+          <Text style={styles.Choose}>Choose background color</Text>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -53,6 +58,16 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: "center",
+  },
+
+  titlebox: {
+    flex: 50,
+  },
+
+  box: {
+    flex: 20,
+    backgroundColor: "#FFFFFF",
+    padding: "10%",
   },
 
   //<Image
