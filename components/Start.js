@@ -138,21 +138,21 @@ const styles = StyleSheet.create({
 
   colorbox: {
     flexDirection: "row",
-    marginBottom: 30,
+    marginBottom: 10,
   },
 
   //Button: {
-  //  color: "#757083",
-  //  fontSize: "16",
-  //  fontWeigh: "600",
+  //color: "#757083",
+  //fontSize: "16",
+  //fontWeigh: "600",
   //},
 
   colorButton: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     margin: 15,
     padding: 5,
-    borderRadius: 25,
+    borderRadius: 20,
     borderWidth: 2,
     borderColor: "tranparent",
   },
