@@ -39,6 +39,14 @@ const Start = ({ navigation }) => {
             onChangeText={setName}
             placeholder="Type your username here"
           />
+          <Button
+            title="Start chatting"
+            color="#757083"
+            fontSize="16"
+            fontWeigh="600"
+            onPress={() => navigation.navigate("Chat", { name: name })}
+          />
+
           <Text style={styles.Choose}>
             Choose background color{color.backgroundColor}
           </Text>
@@ -84,12 +92,6 @@ const Start = ({ navigation }) => {
               ]}
               onPress={() => setColor(backgroundColor.green.backgroundColor)}
             ></TouchableOpacity>
-
-            <Text style={styles.Button}></Text>
-            <Button
-              title="Start chatting"
-              onPress={() => navigation.navigate("Chat", { name: name })}
-            />
           </View>
         </View>
       </ImageBackground>
@@ -139,11 +141,11 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
 
-  Button: {
-    color: "#757083",
-    fontSize: "16",
-    fontWeigh: "600",
-  },
+  //Button: {
+  //  color: "#757083",
+  //  fontSize: "16",
+  //  fontWeigh: "600",
+  //},
 
   colorButton: {
     height: 50,
