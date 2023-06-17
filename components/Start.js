@@ -39,6 +39,7 @@ const Start = ({ navigation }) => {
             onChangeText={setName}
             placeholder="Type your username here"
           />
+
           <Button
             title="Start chatting"
             color="#757083"
@@ -46,52 +47,53 @@ const Start = ({ navigation }) => {
             fontWeigh="600"
             onPress={() => navigation.navigate("Chat", { name: name })}
           />
+          <View style={styles.box}>
+            <Text style={styles.Choose}>
+              Choose background color{color.backgroundColor}
+            </Text>
+            <View style={styles.colorbox}>
+              <TouchableOpacity
+                style={[
+                  styles.colorButton,
+                  backgroundColor.black,
+                  color === backgroundColor.black.backgroundColor
+                    ? styles.selectedColorButton
+                    : "",
+                ]}
+                onPress={() => setColor(backgroundColor.black.backgroundColor)}
+              ></TouchableOpacity>
 
-          <Text style={styles.Choose}>
-            Choose background color{color.backgroundColor}
-          </Text>
-          <View style={styles.colorbox}>
-            <TouchableOpacity
-              style={[
-                styles.colorButton,
-                backgroundColor.black,
-                color === backgroundColor.black.backgroundColor
-                  ? styles.selectedColorButton
-                  : "",
-              ]}
-              onPress={() => setColor(backgroundColor.black.backgroundColor)}
-            ></TouchableOpacity>
-
-            <TouchableOpacity
-              style={[
-                styles.colorButton,
-                backgroundColor.purple,
-                color === backgroundColor.purple.backgroundColor
-                  ? styles.selectedColorButton
-                  : "",
-              ]}
-              onPress={() => setColor(backgroundColor.purple.backgroundColor)}
-            ></TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.colorButton,
-                backgroundColor.gray,
-                color === backgroundColor.gray.backgroundColor
-                  ? styles.selectedColorButton
-                  : "",
-              ]}
-              onPress={() => setColor(backgroundColor.gray.backgroundColor)}
-            ></TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.colorButton,
-                backgroundColor.green,
-                color === backgroundColor.green.backgroundColor
-                  ? styles.selectedColorButton
-                  : "",
-              ]}
-              onPress={() => setColor(backgroundColor.green.backgroundColor)}
-            ></TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.colorButton,
+                  backgroundColor.purple,
+                  color === backgroundColor.purple.backgroundColor
+                    ? styles.selectedColorButton
+                    : "",
+                ]}
+                onPress={() => setColor(backgroundColor.purple.backgroundColor)}
+              ></TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.colorButton,
+                  backgroundColor.gray,
+                  color === backgroundColor.gray.backgroundColor
+                    ? styles.selectedColorButton
+                    : "",
+                ]}
+                onPress={() => setColor(backgroundColor.gray.backgroundColor)}
+              ></TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.colorButton,
+                  backgroundColor.green,
+                  color === backgroundColor.green.backgroundColor
+                    ? styles.selectedColorButton
+                    : "",
+                ]}
+                onPress={() => setColor(backgroundColor.green.backgroundColor)}
+              ></TouchableOpacity>
+            </View>
           </View>
         </View>
       </ImageBackground>
