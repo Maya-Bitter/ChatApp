@@ -48,7 +48,7 @@ const Chat = ({ route, navigation }) => {
       },
       {
         _id: 2,
-        text: "you’ve entered the chat",
+        text: "You’ve entered the chat",
         createdAt: new Date(),
         system: true,
       },
