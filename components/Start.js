@@ -45,7 +45,9 @@ const Start = ({ navigation }) => {
             color="#757083"
             fontSize="16"
             fontWeigh="600"
-            onPress={() => navigation.navigate("Chat", { name: name })}
+            onPress={() =>
+              navigation.navigate("Chat", { name: name, color: color })
+            }
           />
           <View style={styles.box}>
             <Text style={styles.Choose}>
