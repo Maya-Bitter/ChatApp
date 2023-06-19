@@ -38,7 +38,7 @@ const Chat = ({ route, navigation }) => {
     setMessages([
       {
         _id: 1,
-        text: "Welcome!!!",
+        text: "Welcome!",
         createdAt: new Date(),
         user: {
           _id: 2,
