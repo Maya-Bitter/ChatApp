@@ -6,14 +6,31 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { GiftedChat } from "react-native-gifted-chat";
+import { GiftedChat, Bubble } from "react-native-gifted-chat";
 
 const Chat = ({ route, navigation }) => {
   const { name, color } = route.params;
   const [messages, setMessages] = useState([]);
+
   const onSend = (newMessages) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, newMessages)
+    );
+  };
+
+  const renderBubble = (props) => {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: "#000",
+          },
+          left: {
+            backgroundColor: "#FFF",
+          },
+        }}
+      />
     );
   };
 
@@ -21,7 +38,7 @@ const Chat = ({ route, navigation }) => {
     setMessages([
       {
         _id: 1,
-        text: "Hello developer",
+        text: "Welcome!",
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -31,7 +48,7 @@ const Chat = ({ route, navigation }) => {
       },
       {
         _id: 2,
-        text: "This is a system message",
+        text: "you’ve entered the chat",
         createdAt: new Date(),
         system: true,
       },
@@ -47,6 +64,7 @@ const Chat = ({ route, navigation }) => {
       <Text>You are in the Chat</Text>
       <GiftedChat
         messages={messages}
+        renderBubble={renderBubble}
         onSend={(messages) => onSend(messages)}
         user={{
           _id: 1,
