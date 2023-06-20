@@ -7,9 +7,15 @@ import {
   Text,
   Button,
   TextInput,
+  Alert,
 } from "react-native";
+import { getAuth, signInAnonymously } from "firebase/auth";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 const Start = ({ navigation }) => {
+  const auth = getAuth();
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
 
@@ -18,6 +24,21 @@ const Start = ({ navigation }) => {
     purple: { backgroundColor: "#474056" },
     gray: { backgroundColor: "#8A95A5" },
     green: { backgroundColor: "#B9C6AE" },
+  };
+
+  const signInUser = () => {
+    signInAnonymously(auth)
+      .then((result) => {
+        navigation.navigate("Chat", {
+          userID: result.user.uid,
+          name: name,
+          color: color,
+        });
+        Alert.alert("Signed in Successfully!");
+      })
+      .catch((error) => {
+        Alert.alert("Unable to sign in, try later again.");
+      });
   };
 
   return (
@@ -39,16 +60,10 @@ const Start = ({ navigation }) => {
             onChangeText={setName}
             placeholder="Type your username here"
           />
+          <TouchableOpacity style={styles.Button} onPress={signInUser}>
+            <Text style={styles.Button}>Start chatting</Text>
+          </TouchableOpacity>
 
-          <Button
-            title="Start chatting"
-            color="#757083"
-            fontSize="16"
-            fontWeigh="600"
-            onPress={() =>
-              navigation.navigate("Chat", { name: name, color: color })
-            }
-          />
           <View style={styles.box}>
             <Text style={styles.Choose}>
               Choose background color{color.backgroundColor}
@@ -145,11 +160,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  //Button: {
-  //color: "#757083",
-  //fontSize: "16",
-  //fontWeigh: "600",
-  //},
+  Button: {
+    color: "#757083",
+    fontSize: "16",
+    fontWeigh: "600",
+  },
 
   colorButton: {
     height: 40,
