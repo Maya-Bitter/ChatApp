@@ -7,9 +7,16 @@ import {
   Platform,
 } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 
-const Chat = ({ route, navigation }) => {
-  const { name, color } = route.params;
+const Chat = ({ db, route, navigation }) => {
+  const { name, color, userID } = route.params;
   const [messages, setMessages] = useState([]);
 
   const onSend = (newMessages) => {
@@ -57,6 +64,24 @@ const Chat = ({ route, navigation }) => {
 
   useEffect(() => {
     navigation.setOptions({ title: name });
+  }, []);
+
+  useEffect(() => {
+    const q = query(collection(db, "messages"), where("uid", "==", userID));
+
+    const unsubMessages = onSnapshot(q, (documentsSnapshot) => {
+      let newMessages = [];
+      documentsSnapshot.forEach((doc) => {
+        newMessages.push({ id: doc.id, ...doc.data() });
+      });
+      setMessages(newMessages);
+    });
+
+    // Clean up code
+
+    return () => {
+      if (unsubMessages) unsubMessages();
+    };
   }, []);
 
   return (
