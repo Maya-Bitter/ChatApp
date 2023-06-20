@@ -1,6 +1,8 @@
 // import the screens
 import Chat from "./components/Chat";
 import Start from "./components/Start";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 // import react Navigation
 import { NavigationContainer } from "@react-navigation/native";
