@@ -7,22 +7,20 @@ import {
   Platform,
 } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
-import {
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query } from "firebase/firestore";
 
 const Chat = ({ db, route, navigation }) => {
   const { name, color, userID } = route.params;
   const [messages, setMessages] = useState([]);
 
+  // const onSend = (newMessages) => {
+  //   setMessages((previousMessages) =>
+  //     GiftedChat.append(previousMessages, newMessages)
+  //   );
+  // };
+
   const onSend = (newMessages) => {
-    setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, newMessages)
-    );
+    addDoc(collection(db, "messages"), newMessages[0]);
   };
 
   const renderBubble = (props) => {
@@ -41,48 +39,50 @@ const Chat = ({ db, route, navigation }) => {
     );
   };
 
-  useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: "Welcome!",
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://placeimg.com/140/140/any",
-        },
-      },
-      {
-        _id: 2,
-        text: "You’ve entered the chat",
-        createdAt: new Date(),
-        system: true,
-      },
-    ]);
-  }, []);
+  // code from the task's answers //
 
   useEffect(() => {
     navigation.setOptions({ title: name });
-  }, []);
-
-  useEffect(() => {
-    const q = query(collection(db, "messages"), where("uid", "==", userID));
-
-    const unsubMessages = onSnapshot(q, (documentsSnapshot) => {
+    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+    const unsubMessages = onSnapshot(q, (docs) => {
       let newMessages = [];
-      documentsSnapshot.forEach((doc) => {
-        newMessages.push({ id: doc.id, ...doc.data() });
+      docs.forEach((doc) => {
+        newMessages.push({
+          id: doc.id,
+          ...doc.data(),
+          createdAt: new Date(doc.data().createdAt.toMillis()),
+        });
       });
       setMessages(newMessages);
     });
-
-    // Clean up code
-
     return () => {
       if (unsubMessages) unsubMessages();
     };
   }, []);
+
+  // Clean up code
+
+  // wrote myself this code :
+
+  //useEffect(() => {
+  //  navigation.setOptions({ title: name });
+  //}, []);
+
+  //  useEffect(() => {
+  //  const q = query(collection(db, "messages"), where("uid", "==", userID));
+
+  //  const unsubMessages = onSnapshot(q, (documentsSnapshot) => {
+  //    let newMessages = [];
+  //    documentsSnapshot.forEach((doc) => {
+  //      newMessages.push({ id: doc.id, ...doc.data() });
+  //    });
+  //    setMessages(newMessages);
+  //  });
+  //
+  //    return () => {
+  //      if (unsubMessages) unsubMessages();
+  //    };
+  //  }, []);
 
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
@@ -91,9 +91,7 @@ const Chat = ({ db, route, navigation }) => {
         messages={messages}
         renderBubble={renderBubble}
         onSend={(messages) => onSend(messages)}
-        user={{
-          _id: 1,
-        }}
+        user={{ _id: userID, name }}
       />
       {Platform.OS === "android" ? (
         <KeyboardAvoidingView behavior="height" />
