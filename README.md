@@ -1,8 +1,6 @@
 # ChatApp
 
-## **Achievement 5 Project:
-React Native Mobile
-Chat App
+## **Achievement 5 Project: ChatApp**
 
 ### **Contents**
 
