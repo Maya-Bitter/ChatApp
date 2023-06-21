@@ -118,18 +118,14 @@ const Start = ({ navigation }) => {
   );
 };
 const styles = StyleSheet.create({
-  //container: {
-  //  flex: 1,
-  //  justifyContent: "center",
-  //  alignItems: "center",
-  //},
-
   container: {
     flex: 1,
   },
+
   image: {
     flex: 1,
     justifyContent: "center",
+    padding: "6%",
   },
 
   titlebox: {
@@ -139,12 +135,7 @@ const styles = StyleSheet.create({
   box: {
     flex: 44,
     backgroundColor: "#FFFFFF",
-    padding: "6%",
-  },
-
-  image: {
-    flex: 1,
-    padding: "6%",
+    padding: "6",
   },
 
   textInput: {
@@ -162,8 +153,8 @@ const styles = StyleSheet.create({
 
   Button: {
     color: "#757083",
-    fontSize: "16",
-    fontWeigh: "600",
+    fontSize: 16,
+    fontWeight: 600,
   },
 
   colorButton: {
@@ -173,7 +164,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: "tranparent",
+    borderColor: "transparent",
   },
   selectedColorButton: {
     borderColor: "#555",
