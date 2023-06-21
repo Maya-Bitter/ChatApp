@@ -94,6 +94,3 @@ reader so that I can engage with a chat interface.___
 
 [go to start](#Contents)
 
-
-[go to start](#Contents)
-
