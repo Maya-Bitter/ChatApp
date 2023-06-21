@@ -16,26 +16,24 @@
 
 ## **Objective**
 
-To build a chat app for mobile devices using React Native. The app will
-provide users with a chat interface and options to share images and their
+To build a chat app for mobile devices using React Native. 
+The app will provide users with a chat interface and options to share images and their
 location.
 
 [go to start](#Contents)
 
 ## Context
 
-More and more people use their phones for daily tasks, such as shopping, creating to-do lists,
-communicating with friends, scheduling meetings, and more. That's why many companies offer native
-mobile versions of their web apps, or even skip creating a web app entirely.
 In the past, building high-quality mobile apps required a lot of time and money because writing apps
 for different platforms like iOS and Android required specialized programmers who could build and
 maintain multiple codebases.
+
 Over time, however, new technologies emerged that made it easier for companies to build and
 maintain mobile applications using familiar syntax. One of these technologies is React Native, a
 framework for building Android and iOS apps that only requires one codebase.
-For this Achievement’s project, you’ll use React Native, Expo, and Google Firestore Database to build a
-chat app that you can add to your portfolio and demonstrate your knowledge of JavaScript mobile
-development.
+
+For this Achievement’s project, I used React Native, Expo, and Google Firestore Database to build a
+chat app.
 
 
 ## Technical Requirements
