@@ -13,7 +13,7 @@ import {
   addDoc,
   onSnapshot,
   query,
-  where,
+  orderBy,
 } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -24,32 +24,25 @@ const Chat = ({ db, route, navigation, isConnected }) => {
   let unsubMessages;
 
   useEffect(() => {
-    //Set the state with a static message
     navigation.setOptions({ title: name });
 
-    if (isConnected === true) {
-      // unregister current onSnapshot() listener to avoid registering multiple listeners when
-      // useEffect code is re-executed.
-
-      if (unsubMessages) unsubMessages();
-      unsubMessages = null;
-
-      const q = query(collection(db, "messages"), where("uid", "==", userID));
-      unsubMessages = onSnapshot(q, (documentsSnapshot) => {
-        let newMessages = [];
-        documentsSnapshot.forEach((doc) => {
-          newMessages.push({ id: doc.id, ...doc.data() });
+    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+    const unsubMessages = onSnapshot(q, (docs) => {
+      let NewMessage = [];
+      docs.forEach((doc) => {
+        NewMessage.push({
+          id: doc.id,
+          ...doc.data(),
+          createdAt: new Date(doc.data().createdAt.toMillis()),
         });
-        cacheMessages(newMessages);
-        setMessages(newMessages);
       });
-    } else loadCachedMessages();
 
-    // Clean up code
+      setMessages(setMessages);
+    });
     return () => {
       if (unsubMessages) unsubMessages();
     };
-  }, [isConnected]);
+  }, []);
 
   const loadCachedMessages = async () => {
     const cachedMessages = (await AsyncStorage.getItem("messages")) || [];
