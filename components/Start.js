@@ -60,10 +60,6 @@ const Start = ({ navigation }) => {
             onChangeText={setName}
             placeholder="Type your username here"
           />
-          <TouchableOpacity style={styles.Button} onPress={signInUser}>
-            <Text style={styles.Button}>Start chatting</Text>
-          </TouchableOpacity>
-
           <View style={styles.box}>
             <Text style={styles.Choose}>
               Choose background color{color.backgroundColor}
@@ -111,6 +107,9 @@ const Start = ({ navigation }) => {
                 onPress={() => setColor(backgroundColor.green.backgroundColor)}
               ></TouchableOpacity>
             </View>
+            <TouchableOpacity style={styles.ButtonStart} onPress={signInUser}>
+              <Text style={styles.ButtonStartText}>Start chatting</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>
@@ -151,10 +150,18 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  Button: {
-    color: "#757083",
+  ButtonStartText: {
     fontSize: 16,
-    fontWeight: 600,
+    fontWeight: "600",
+    color: "#FFFFFF",
+    justifyContent: "center",
+    textAlign: "center",
+  },
+
+  ButtonStart: {
+    padding: 10,
+    backgroundColor: "#757083",
+    alignContent: "center",
   },
 
   colorButton: {
@@ -175,12 +182,14 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 45,
   },
+
   BigWhite: {
     color: "#FFFFFF",
     fontSize: 45,
     fontWeight: "600",
     textAlign: "center",
   },
+
   Name: {
     color: "#757083",
     fontSize: 16,
