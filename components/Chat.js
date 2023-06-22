@@ -23,21 +23,23 @@ const Chat = ({ db, route, navigation, isConnected }) => {
 
   let unsubMessages;
 
+  //changed the code //
+
   useEffect(() => {
     navigation.setOptions({ title: name });
 
     const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
     const unsubMessages = onSnapshot(q, (docs) => {
-      let NewMessage = [];
+      let newMessages = [];
       docs.forEach((doc) => {
-        NewMessage.push({
+        newMessages.push({
           id: doc.id,
           ...doc.data(),
           createdAt: new Date(doc.data().createdAt.toMillis()),
         });
       });
 
-      setMessages(setMessages);
+      setMessages(newMessages);
     });
     return () => {
       if (unsubMessages) unsubMessages();
