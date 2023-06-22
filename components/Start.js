@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   box: {
     flex: 44,
     backgroundColor: "#FFFFFF",
-    padding: "6",
+    padding: 6,
   },
 
   textInput: {
