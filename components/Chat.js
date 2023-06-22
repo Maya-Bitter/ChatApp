@@ -8,7 +8,13 @@ import {
 } from "react-native";
 
 import { GiftedChat, Bubble, InputToolbar } from "react-native-gifted-chat";
-import { collection, addDoc, onSnapshot, query } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Chat = ({ db, route, navigation, isConnected }) => {
