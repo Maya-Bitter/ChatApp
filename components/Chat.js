@@ -44,11 +44,11 @@ const Chat = ({ db, route, navigation, isConnected }) => {
 
     // Clean up code
     return () => {
-      if (unsubShoppinglists) unsubShoppinglists();
+      if (unsubMessages) unsubMessages();
     };
   }, [isConnected]);
 
-  const cacheMessages = async (messageToCache) => {
+  const cacheMessages = async (messagesToCache) => {
     try {
       await AsyncStorage.setItem("messages", JSON.stringify(messagesToCache));
     } catch (error) {
