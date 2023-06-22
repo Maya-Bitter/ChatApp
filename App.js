@@ -42,6 +42,10 @@ const App = () => {
 
   const connectionStatus = useNetInfo();
 
+  useEffect(() => {
+    if (connectionStatus.isConnected === false) Alert.alert("Connection lost!");
+  }, [connectionStatus.isConnected]);
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
