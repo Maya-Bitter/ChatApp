@@ -19,17 +19,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Chat = ({ db, route, navigation, isConnected }) => {
   const { name, color, userID } = route.params;
-
   const [messages, setMessages] = useState([]);
-
-  useEffect(() => {
-    //Set the state with a static message
-    navigation.setOptions({ title: name });
-  }, []);
 
   let unsubMessages;
 
   useEffect(() => {
+    //Set the state with a static message
+    navigation.setOptions({ title: name });
+
     if (isConnected === true) {
       // unregister current onSnapshot() listener to avoid registering multiple listeners when
       // useEffect code is re-executed.
@@ -62,11 +59,6 @@ const Chat = ({ db, route, navigation, isConnected }) => {
     }
   };
 
-  const renderInputToolbar = (props) => {
-    if (isConnected) return <InputToolbar {...props} />;
-    else return null;
-  };
-
   const loadCachedMessages = async () => {
     const cachedMessages = (await AsyncStorage.getItem("messages")) || [];
     setMessages(JSON.parse(cachedMessages));
@@ -90,6 +82,11 @@ const Chat = ({ db, route, navigation, isConnected }) => {
         }}
       />
     );
+  };
+
+  const renderInputToolbar = (props) => {
+    if (isConnected) return <InputToolbar {...props} />;
+    else return null;
   };
 
   return (
