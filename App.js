@@ -1,6 +1,14 @@
 // import the screens
 import Chat from "./components/Chat";
 import Start from "./components/Start";
+import { useNetInfo } from "@react-native-community/netinfo";
+import { useEffect } from "react";
+import { LogBox, Alert } from "react-native";
+import {
+  getFirestore,
+  disableNetwork,
+  enableNetwork,
+} from "firebase/firestore";
 
 // import react Navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -11,7 +19,6 @@ const Stack = createNativeStackNavigator();
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -32,6 +39,8 @@ const App = () => {
 
   // Initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
+
+  const connectionStatus = useNetInfo();
 
   return (
     <NavigationContainer>
