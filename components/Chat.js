@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
 import { collection, addDoc, onSnapshot, query } from "firebase/firestore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Chat = ({ db, route, navigation }) => {
   const { name, color, userID } = route.params;
@@ -39,50 +40,31 @@ const Chat = ({ db, route, navigation }) => {
     );
   };
 
-  // code from the task's answers //
-
   useEffect(() => {
+    //Set the state with a static message
     navigation.setOptions({ title: name });
-    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
-    const unsubMessages = onSnapshot(q, (docs) => {
-      let newMessages = [];
-      docs.forEach((doc) => {
-        newMessages.push({
-          id: doc.id,
-          ...doc.data(),
-          createdAt: new Date(doc.data().createdAt.toMillis()),
-        });
-      });
-      setMessages(newMessages);
-    });
-    return () => {
-      if (unsubMessages) unsubMessages();
-    };
   }, []);
 
-  // Clean up code
+  useEffect(() => {
+    const q = query(collection(db, "messages"), where("uid", "==", userID));
+    const unsubShoppinglists = onSnapshot(q, async (documentsSnapshot) => {
+      let newMessages = [];
+      documentsSnapshot.forEach((doc) => {
+        newMessages.push({ id: doc.id, ...doc.data() });
+      });
+      try {
+        await AsyncStorage.setItem("messages", JSON.stringify(newMessages));
+      } catch (error) {
+        console.log(error.message);
+      }
+      setLists(newLists);
+    });
 
-  // wrote myself this code :
-
-  //useEffect(() => {
-  //  navigation.setOptions({ title: name });
-  //}, []);
-
-  //  useEffect(() => {
-  //  const q = query(collection(db, "messages"), where("uid", "==", userID));
-
-  //  const unsubMessages = onSnapshot(q, (documentsSnapshot) => {
-  //    let newMessages = [];
-  //    documentsSnapshot.forEach((doc) => {
-  //      newMessages.push({ id: doc.id, ...doc.data() });
-  //    });
-  //    setMessages(newMessages);
-  //  });
-  //
-  //    return () => {
-  //      if (unsubMessages) unsubMessages();
-  //    };
-  //  }, []);
+    // Clean up code
+    return () => {
+      if (unsubShoppinglists) unsubShoppinglists();
+    };
+  }, []);
 
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
