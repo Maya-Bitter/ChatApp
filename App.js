@@ -15,6 +15,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Create the navigator
+
 const Stack = createNativeStackNavigator();
 
 // Import the functions you need from the SDKs you need
@@ -22,6 +23,8 @@ import { initializeApp } from "firebase/app";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 const App = () => {
   // Your web app's Firebase configuration
@@ -60,6 +63,7 @@ const App = () => {
             <Chat
               isConnected={connectionStatus.isConnected}
               db={db}
+              storage={storage}
               {...props}
             />
           )}
