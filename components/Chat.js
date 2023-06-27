@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
-
+import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native";
 import { GiftedChat, Bubble, InputToolbar } from "react-native-gifted-chat";
 import {
   collection,
@@ -19,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomActions from "./CustomActions";
 import MapView from "react-native-maps";
 
-const Chat = ({ db, route, navigation, isConnected, storage }) => {
+const Chat = ({ db, storage, route, navigation, isConnected }) => {
   const { name, color, userID } = route.params;
   const [messages, setMessages] = useState([]);
 
@@ -114,26 +107,24 @@ const Chat = ({ db, route, navigation, isConnected, storage }) => {
     return null;
   };
 
-  return (
-    <View style={[styles.container, { backgroundColor: color }]}>
-      <Text>welcome to the chat room!</Text>
-      <GiftedChat
-        messages={messages}
-        renderBubble={renderBubble}
-        renderInputToolbar={renderInputToolbar}
-        onSend={(messages) => onSend(messages)}
-        renderActions={renderCustomActions}
-        renderCustomView={renderCustomView}
-        user={{
-          _id: userID,
-          name,
-        }}
-      />
-      {Platform.OS === "android" ? (
-        <KeyboardAvoidingView behavior="height" />
-      ) : null}
-    </View>
-  );
+  <View style={[styles.container, { backgroundColor: color }]}>
+    <Text>welcome to the chat room!</Text>
+    <GiftedChat
+      messages={messages}
+      renderBubble={renderBubble}
+      renderInputToolbar={renderInputToolbar}
+      onSend={(messages) => onSend(messages)}
+      renderActions={renderCustomActions}
+      renderCustomView={renderCustomView}
+      user={{
+        _id: userID,
+        name,
+      }}
+    />
+    {Platform.OS === "android" ? (
+      <KeyboardAvoidingView behavior="height" />
+    ) : null}
+  </View>;
 };
 
 const styles = StyleSheet.create({
