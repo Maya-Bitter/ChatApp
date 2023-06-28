@@ -92,7 +92,6 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
   };
 
   const renderCustomActions = (props) => {
-    console.log("STORAGE!!!!", storage);
     return <CustomActions userID={userID} storage={storage} {...props} />;
   };
 
@@ -114,8 +113,8 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
     return null;
   };
 
+  return(
   <View style={[styles.container, { backgroundColor: color }]}>
-    <Text>welcome to the chat room!</Text>
     <GiftedChat
       messages={messages}
       renderBubble={renderBubble}
@@ -131,7 +130,8 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
     {Platform.OS === "android" ? (
       <KeyboardAvoidingView behavior="height" />
     ) : null}
-  </View>;
+  </View>
+  )
 };
 
 const styles = StyleSheet.create({
