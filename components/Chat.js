@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native";
+import {
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+} from "react-native";
 import { GiftedChat, Bubble, InputToolbar } from "react-native-gifted-chat";
 import {
   collection,
@@ -86,6 +92,7 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
   };
 
   const renderCustomActions = (props) => {
+    console.log("STORAGE!!!!", storage);
     return <CustomActions userID={userID} storage={storage} {...props} />;
   };
 

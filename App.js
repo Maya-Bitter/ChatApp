@@ -10,6 +10,9 @@ import {
   enableNetwork,
 } from "firebase/firestore";
 
+// import function for initialisation of Firebase Storage (images)
+import { getStorage } from "firebase/storage";
+
 // import react Navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -42,6 +45,9 @@ const App = () => {
 
   // Initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
+
+  // Initialize Firestore Storage and get a reference to the service
+  const storage = getStorage(app);
 
   const connectionStatus = useNetInfo();
 
