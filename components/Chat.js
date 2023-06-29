@@ -92,7 +92,6 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
   };
 
   const renderCustomActions = (props) => {
-    console.log("STORAGE!!!!", storage);
     return <CustomActions userID={userID} storage={storage} {...props} />;
   };
 
@@ -114,24 +113,25 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
     return null;
   };
 
-  <View style={[styles.container, { backgroundColor: color }]}>
-    <Text>welcome to the chat room!</Text>
-    <GiftedChat
-      messages={messages}
-      renderBubble={renderBubble}
-      renderInputToolbar={renderInputToolbar}
-      onSend={(messages) => onSend(messages)}
-      renderActions={renderCustomActions}
-      renderCustomView={renderCustomView}
-      user={{
-        _id: userID,
-        name,
-      }}
-    />
-    {Platform.OS === "android" ? (
-      <KeyboardAvoidingView behavior="height" />
-    ) : null}
-  </View>;
+  return (
+    <View style={[styles.container, { backgroundColor: color }]}>
+      <GiftedChat
+        messages={messages}
+        renderBubble={renderBubble}
+        renderInputToolbar={renderInputToolbar}
+        onSend={(messages) => onSend(messages)}
+        renderActions={renderCustomActions}
+        renderCustomView={renderCustomView}
+        user={{
+          _id: userID,
+          name,
+        }}
+      />
+      {Platform.OS === "android" ? (
+        <KeyboardAvoidingView behavior="height" />
+      ) : null}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
