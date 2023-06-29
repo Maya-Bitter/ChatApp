@@ -39,15 +39,15 @@ chat app.
 * The app is written in React Native.
 * The app is developed using Expo. 
 * Chat conversations messages stored in [Google Firestore Database](https://firebase.google.com/).
-* The app authenticate users anonymously via Google Firebase authentication.
-* Chat conversations must be stored locally.
-* The app must let users pick and send images from the phone’s image library.
-* The app must let users take pictures with the device’s camera app, and send them.
-* The app must store images in Firebase Cloud Storage.
-* The app must be able to read the user’s location data.
-* Location data must be sent via the chat in a map view.
-* The chat interface and functionality must be created using the Gifted Chat library.
-* The app’s codebase must contain comments.
+* The app authenticate users anonymously via [Google Firebase authentication](https://firebase.google.com/docs/auth).
+* Chat conversations stored locally.
+* The app lets users pick and send images from the phone’s image library.
+* The app lets users take pictures with the device’s camera app, and send them.
+* The app store images in [Google Firebase Cloud Storage](https://firebase.google.com/docs/storage/).
+* The app ables to read the user’s location data.
+* Location data being send via the chat in a map view.
+* The chat interface and functionality created using the [Gifted Chat library](https://www.npmjs.com/package/react-native-gifted-chat).
+* The app’s codebase contain comments.
 
 ### The app is styled according to the given screen design:
 
