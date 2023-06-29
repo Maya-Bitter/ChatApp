@@ -113,7 +113,6 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
     return null;
   };
 
-<<<<<<< HEAD
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
       <GiftedChat
@@ -133,27 +132,6 @@ const Chat = ({ db, storage, route, navigation, isConnected }) => {
       ) : null}
     </View>
   );
-=======
-  return(
-  <View style={[styles.container, { backgroundColor: color }]}>
-    <GiftedChat
-      messages={messages}
-      renderBubble={renderBubble}
-      renderInputToolbar={renderInputToolbar}
-      onSend={(messages) => onSend(messages)}
-      renderActions={renderCustomActions}
-      renderCustomView={renderCustomView}
-      user={{
-        _id: userID,
-        name,
-      }}
-    />
-    {Platform.OS === "android" ? (
-      <KeyboardAvoidingView behavior="height" />
-    ) : null}
-  </View>
-  )
->>>>>>> 471c5f1b68c0a92a72ef54a3c3d8bc403a380f59
 };
 
 const styles = StyleSheet.create({
