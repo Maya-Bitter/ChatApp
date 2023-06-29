@@ -36,9 +36,8 @@ chat app.
 
 ## Technical Requirements
 
-* The app must be written in React Native.
-* The app must be developed using Expo.
-* The app must be styled according to the given screen design.
+* The app is written in React Native.
+* The app is developed using Expo. 
 * Chat conversations must be stored in Google Firestore Database.
 * The app must authenticate users anonymously via Google Firebase authentication.
 * Chat conversations must be stored locally.
@@ -49,6 +48,15 @@ chat app.
 * Location data must be sent via the chat in a map view.
 * The chat interface and functionality must be created using the Gifted Chat library.
 * The app’s codebase must contain comments.
+
+### The app is styled according to the given screen design:
+
+* Vertical and horizontal spacing: evenly distributed
+* App title: font size 45, font weight 600, font color #FFFFFF
+* “Your name”: font size 16, font weight 300, font color #757083, 50% opacity
+* “Choose background color”: font size 16, font weight 300, font color #757083, 100% opacity
+* Color options HEX codes: #090C08; #474056; #8A95A5; #B9C6AE
+* Start chatting button: font size 16, font weight 600, font color #FFFFFF, button color #757083
 
 [go to start](#Contents)
 
