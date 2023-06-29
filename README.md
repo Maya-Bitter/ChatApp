@@ -4,8 +4,6 @@
 
 ### **Contents**
 
-[App link ChatApp](https://github.com/Maya-Bitter/ChatApp)
-
 [Objective](#Objective)
 
 [Context](#Context)
@@ -16,8 +14,8 @@
 
 ## **Objective**
 
-To build a chat app for mobile devices using React Native. 
-The app will provide users with a chat interface and options to share images and their
+In this project I built a chat app for mobile devices using React Native. 
+The app provideS users with a chat interface and options to share images and their
 location.
 
 [go to start](#Contents)
