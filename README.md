@@ -38,8 +38,8 @@ chat app.
 
 * The app is written in React Native.
 * The app is developed using Expo. 
-* Chat conversations must be stored in Google Firestore Database.
-* The app must authenticate users anonymously via Google Firebase authentication.
+* Chat conversations messages stored in [Google Firestore Database](https://firebase.google.com/).
+* The app authenticate users anonymously via Google Firebase authentication.
 * Chat conversations must be stored locally.
 * The app must let users pick and send images from the phone’s image library.
 * The app must let users take pictures with the device’s camera app, and send them.
